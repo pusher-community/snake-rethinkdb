@@ -43,4 +43,5 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 group :production do
   gem 'heroku_secrets', github: 'jpatel531/heroku_secrets'
+  gem 'rails_12factor'
 end
