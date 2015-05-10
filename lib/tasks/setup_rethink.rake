@@ -19,7 +19,9 @@ namespace :setup_rethink do
 
     begin
       r.table_create("players").run
-    rescue RethinkDB::RqlRuntimeError
+    rescue RethinkDB::RqlRuntimeError => e
+      puts e.message
+      puts e.backtrace
       puts "Players table already exists"
     end
 

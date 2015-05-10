@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/jpatel531/heroku_secrets.git
-  revision: 7629fa792b2ccb54a85cafe3923e46ddb6875f7f
+  revision: ca11b7656208491c5b87f10442c3804a4cd030ca
   specs:
     heroku_secrets (0.0.2)
 
