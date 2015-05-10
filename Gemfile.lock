@@ -1,3 +1,8 @@
+PATH
+  remote: /Users/jamiepatel/.rvm/rubies/ruby-2.0.0-p594/lib/ruby/gems/2.0.0/bundler/gems/heroku_secrets-717af8e0acf3
+  specs:
+    heroku_secrets (0.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,6 +131,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.4)
   coffee-rails (~> 4.0.0)
   eventmachine
+  heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
   pusher
