@@ -42,5 +42,5 @@ gem 'underscore-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
 
 group :production do
-  gem 'heroku_secrets', path: '/Users/jamiepatel/.rvm/rubies/ruby-2.0.0-p594/lib/ruby/gems/2.0.0/bundler/gems/heroku_secrets-717af8e0acf3'
+  gem 'heroku_secrets', github: 'jpatel531/heroku_secrets'
 end

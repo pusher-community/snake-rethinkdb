@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/jamiepatel/.rvm/rubies/ruby-2.0.0-p594/lib/ruby/gems/2.0.0/bundler/gems/heroku_secrets-717af8e0acf3
+GIT
+  remote: git://github.com/jpatel531/heroku_secrets.git
+  revision: 7629fa792b2ccb54a85cafe3923e46ddb6875f7f
   specs:
     heroku_secrets (0.0.2)
 
