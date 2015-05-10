@@ -26,7 +26,7 @@ namespace :setup_rethink do
     end
 
     begin
-      r.table("players").index_create("high_score")
+      r.table("players").index_create("high_score").run
     rescue
       puts "highscore already indexed"
     end
