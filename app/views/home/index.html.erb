@@ -1,0 +1,39 @@
+<div class="row">
+
+  <h1 class="text-center">The Snake</h1>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+
+  <% if @current_player %>
+    <h2>Welcome back, <%= @current_player["name"] %></h2>
+
+    <button class="btn btn-default" id="start-playing">Click here to start playing</button>
+  <% else %>
+
+    <input type="text" id="enter-name" placeholder="Please enter your name">
+
+<% end %>
+
+  <canvas id="canvas" width="450" height="450"></canvas>
+
+  </div>
+
+  <div class="col-md-6">
+
+    <div class="col-md-6">
+      <ul id="json-feed">
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <ul id="high-scores-list">
+      </ul>
+    </div>
+
+  </div>
+
+</div>
