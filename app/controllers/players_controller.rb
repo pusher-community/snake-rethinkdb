@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
 
     score_update = {score: score}
 
-    if !player["score"] || score > player["score"]
+    if !player["score"] || score > player["high_score"]
       score_update[:high_score] = score
     end
 
