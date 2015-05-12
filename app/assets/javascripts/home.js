@@ -9,20 +9,9 @@ $(document).ready(function(){
   var graph, name;
 
   var scores = {}
-  // var players = [];
 
   var leaders = [];
   
-
-
-  setInterval(function(){
-
-    if (!(graph && name)) return;
-
-
-
-
-  }, 1000)
 
   function showLeaderBoard(){
 
@@ -53,12 +42,15 @@ $(document).ready(function(){
 
   $("#start-playing").on("click", function(){
     name = $("#player-name").text();
+    scores[name] = 0;
     startGame();
   });
 
   $("#enter-name").on("keydown", function(event){
     if (event.keyCode != 13) return;
     name = $(this).val()
+    scores[name] = 0;
+
     $.post("/players", {name: name}).success(startGame.bind(this));
     
   });
@@ -72,11 +64,14 @@ $(document).ready(function(){
   var scoresChannel = pusher.subscribe('scores');
 
   scoresChannel.bind("new_score", function(player){
-    console.log(player);
-    scores[player.name] = player.score
-    // var set = _.findWhere(graph.data, {label: player.name});
-    // set.values.push({time: Date.now()/1000, y: player.score})
-    // console.log(graph);
+    // console.log(scores);
+    var chart = $('#graph').highcharts()
+    // console.log(scores[player.name])
+    if (!_.findWhere(chart.series, {name: player.name})) {
+      chart.addSeries({name: player.name, data: [{x: new Date().getTime(), y: player.score}]});
+    } 
+    if (player.score != 0)  scores[player.name] = player.score
+
     var shownObject = {name: player.name, score: player.score}
     $('ul#json-feed').prepend("<li>" + JSON.stringify(shownObject) +  "</li>")
   });
@@ -90,47 +85,63 @@ $(document).ready(function(){
 
   function showGraph(){
 
-    $('#graph').highcharts({
+    window.graph = graph = $('#graph').highcharts({
       chart: {
           type: 'spline',
           animation: Highcharts.svg, // don't animate in old IE
           marginRight: 10,
           events: {
-              load: function () {
+            load: function () {
 
-                  // set up the updating of the chart each second
-                  var series = this.series[0];
-                  setInterval(function () {
-                      var x = (new Date()).getTime(), // current time
-                          y = Math.random();
-                      series.addPoint([x, y], true, true);
-                  }, 1000);
-              }
+                // set up the updating of the chart each second
+                // var series = this.series[0];
+                // setInterval(function () {
+                //     var x = (new Date()).getTime(), // current time
+                //         y = Math.random() * 1000;
+                //     series.addPoint([x, y], true, true);
+                // }, 1000);
+              setInterval(function(){
+                console.log(this.series)
+                this.series.forEach(function(series){
+                  // console.log(series.name)
+                  var name = series.name;
+
+                  var x = (new Date()).getTime(),
+                      y = scores[name]
+
+                  // console.log(y);
+
+                  series.addPoint([x, y], true, true);
+
+                });
+              }.bind(this), 1000);
+
+            }
           }
       },
       title: {
-          text: 'Live random data'
+        text: 'Live Scores'
       },
       xAxis: {
-          type: 'datetime',
-          tickPixelInterval: 150
+        type: 'datetime',
+        tickPixelInterval: 150
       },
       yAxis: {
           title: {
-              text: 'Value'
+            text: 'Value'
           },
           plotLines: [{
-              value: 0,
-              width: 1,
-              color: '#808080'
+            value: 0,
+            width: 1,
+            color: '#808080'
           }]
       },
       tooltip: {
-          formatter: function () {
-              return '<b>' + this.series.name + '</b><br/>' +
-                  Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                  Highcharts.numberFormat(this.y, 2);
-          }
+        formatter: function () {
+            return '<b>' + this.series.name + '</b><br/>' +
+                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                Highcharts.numberFormat(this.y, 2);
+        }
       },
       legend: {
           enabled: false
@@ -139,20 +150,21 @@ $(document).ready(function(){
           enabled: false
       },
       series: [{
-        name: 'Random data',
+        name: name,
         data: (function () {
-            // generate an array of random data
-            var data = [],
-                time = (new Date()).getTime(),
-                i;
 
-            for (i = -19; i <= 0; i += 1) {
-                data.push({
-                    x: time + i * 1000,
-                    y: Math.random()
-                });
-            }
-            return data;
+          var data = [],
+          time = (new Date()).getTime(),
+          i;
+
+          for (i = -19; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: 0
+            });
+          }
+          return data; 
+
         }())
       }]
     });

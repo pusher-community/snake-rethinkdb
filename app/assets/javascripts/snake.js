@@ -82,7 +82,6 @@ $(document).ready(function(){
     if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
     {
       //restart game
-      console.log("Game over")
       $(document).trigger("game_over", score);
       init();
       //Lets organize the code a bit now.
