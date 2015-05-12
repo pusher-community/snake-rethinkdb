@@ -68,7 +68,22 @@ $(document).ready(function(){
     var chart = $('#graph').highcharts()
     // console.log(scores[player.name])
     if (!_.findWhere(chart.series, {name: player.name})) {
-      chart.addSeries({name: player.name, data: [{x: new Date().getTime(), y: player.score}]});
+      console.log('adding series')
+
+      var data = [],
+      time = (new Date()).getTime(),
+      i
+
+      for (i = -19; i <= 0; i += 1) {
+        data.push({
+          x: time + i * 1000,
+          y: 0
+        });
+      }
+
+      data.push({x: time + i * 1000, y: player.score})
+
+      chart.addSeries({name: player.name, data: data});
     } 
     if (player.score != 0)  scores[player.name] = player.score
 
@@ -92,25 +107,12 @@ $(document).ready(function(){
           marginRight: 10,
           events: {
             load: function () {
-
-                // set up the updating of the chart each second
-                // var series = this.series[0];
-                // setInterval(function () {
-                //     var x = (new Date()).getTime(), // current time
-                //         y = Math.random() * 1000;
-                //     series.addPoint([x, y], true, true);
-                // }, 1000);
               setInterval(function(){
-                console.log(this.series)
                 this.series.forEach(function(series){
-                  // console.log(series.name)
                   var name = series.name;
 
                   var x = (new Date()).getTime(),
                       y = scores[name]
-
-                  // console.log(y);
-
                   series.addPoint([x, y], true, true);
 
                 });
@@ -134,6 +136,9 @@ $(document).ready(function(){
             value: 0,
             width: 1,
             color: '#808080'
+          }, {
+            value: 0,
+            width: 1
           }]
       },
       tooltip: {
