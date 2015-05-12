@@ -1,28 +1,28 @@
 $(document).ready(function(){
 
+  Highcharts.setOptions({
+      global: {
+          useUTC: false
+      }
+  });
+
   var graph, name;
 
-  var score = 0;
-
   var scores = {}
+  // var players = [];
 
   var leaders = [];
   
 
 
   setInterval(function(){
-    // console.log('hey');
 
     if (!(graph && name)) return;
-    // var set = _.findWhere(graph.data, {label: name});
-    // set.values.push({time: Date.now()/1000, y: score})
 
-    graph.push([{
-      label: name,
-      values: {time: Date.now()/1000, y: score}
-    }])
 
-  }, 200)
+
+
+  }, 1000)
 
   function showLeaderBoard(){
 
@@ -63,8 +63,8 @@ $(document).ready(function(){
     
   });
 
-  $(document).on("game_over", function(event, score){
-    $.post("/players/score", {score: score})
+  $(document).on("game_over", function(event, result){
+    $.post("/players/score", {score: result})
   });
 
   var pusher = new Pusher('1f0686af24f0faebe5d4');
@@ -72,11 +72,11 @@ $(document).ready(function(){
   var scoresChannel = pusher.subscribe('scores');
 
   scoresChannel.bind("new_score", function(player){
-    // score = player.score;
-    // console.log(graph.data)
-    var set = _.findWhere(graph.data, {label: player.name});
-    set.values.push({time: Date.now()/1000, y: player.score})
-    console.log(graph);
+    console.log(player);
+    scores[player.name] = player.score
+    // var set = _.findWhere(graph.data, {label: player.name});
+    // set.values.push({time: Date.now()/1000, y: player.score})
+    // console.log(graph);
     var shownObject = {name: player.name, score: player.score}
     $('ul#json-feed').prepend("<li>" + JSON.stringify(shownObject) +  "</li>")
   });
@@ -89,19 +89,74 @@ $(document).ready(function(){
   });
 
   function showGraph(){
-    var data = [{
-      label: name,
-      values: [{
-        time: Date.now() / 1000,
-        y: score
+
+    $('#graph').highcharts({
+      chart: {
+          type: 'spline',
+          animation: Highcharts.svg, // don't animate in old IE
+          marginRight: 10,
+          events: {
+              load: function () {
+
+                  // set up the updating of the chart each second
+                  var series = this.series[0];
+                  setInterval(function () {
+                      var x = (new Date()).getTime(), // current time
+                          y = Math.random();
+                      series.addPoint([x, y], true, true);
+                  }, 1000);
+              }
+          }
+      },
+      title: {
+          text: 'Live random data'
+      },
+      xAxis: {
+          type: 'datetime',
+          tickPixelInterval: 150
+      },
+      yAxis: {
+          title: {
+              text: 'Value'
+          },
+          plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+          }]
+      },
+      tooltip: {
+          formatter: function () {
+              return '<b>' + this.series.name + '</b><br/>' +
+                  Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                  Highcharts.numberFormat(this.y, 2);
+          }
+      },
+      legend: {
+          enabled: false
+      },
+      exporting: {
+          enabled: false
+      },
+      series: [{
+        name: 'Random data',
+        data: (function () {
+            // generate an array of random data
+            var data = [],
+                time = (new Date()).getTime(),
+                i;
+
+            for (i = -19; i <= 0; i += 1) {
+                data.push({
+                    x: time + i * 1000,
+                    y: Math.random()
+                });
+            }
+            return data;
+        }())
       }]
-    }]
-   graph = $('#graph').epoch({
-      type: 'time.line',
-      axes: ["left" ,"bottom"],
-      ticks: {left: 5 },
-      data: data
-    });   
+    });
+
   }
 
 
