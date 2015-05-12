@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require d3
+//= require epoch.min
 //= require_tree .
