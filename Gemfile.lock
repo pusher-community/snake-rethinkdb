@@ -1,0 +1,21 @@
+GEM
+  specs:
+    eventmachine (1.0.3)
+    httpclient (2.6.0.1)
+    json (1.8.2)
+    multi_json (1.11.0)
+    pusher (0.14.4)
+      httpclient (~> 2.5)
+      multi_json (~> 1.0)
+      signature (~> 0.1.8)
+    rethinkdb (2.0.0.1)
+      json
+    signature (0.1.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  eventmachine
+  pusher
+  rethinkdb
