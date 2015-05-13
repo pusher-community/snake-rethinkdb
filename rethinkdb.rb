@@ -13,9 +13,10 @@ r.connect(
   db: 'snake',
 ).repl
 
+PLAYERS = r.table("players")
 
-LIVE_SCORES = r.table("players").has_fields("score")
-LEADERBOARD = r.table('players').order_by({index: r.desc('high_score')}).limit(5)
+LIVE_SCORES = PLAYERS.has_fields("score")
+LEADERBOARD = PLAYERS.order_by({index: r.desc('high_score')}).limit(5)
 
 EventMachine.next_tick do
 
