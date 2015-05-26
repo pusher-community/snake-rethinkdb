@@ -103,6 +103,10 @@ $(document).ready(function(){
           type: 'spline',
           animation: Highcharts.svg, // don't animate in old IE
           marginRight: 10,
+          style: {
+            fontFamily: 'Source Sans Pro',
+            color: 'white'
+          },
           events: {
             load: function () {
               setInterval(function(){
