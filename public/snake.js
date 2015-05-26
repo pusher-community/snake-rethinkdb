@@ -57,9 +57,14 @@ $(document).ready(function(){
   {
     //To avoid the snake trail we need to paint the BG on every frame
     //Lets paint the canvas now
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = "black";
+    // ctx.fillStyle = "#339fba";
+    // ctx.fillRect(0, 0, w, h);
+    // ctx.strokeStyle = "white";
+    // ctx.strokeRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h);
+    // ctx.fillStyle = "#339fba";
+    // ctx.fillRect(0, 0, w, h);
+    ctx.strokeStyle = "white";
     ctx.strokeRect(0, 0, w, h);
     
     //The movement code for the snake to come here.
@@ -103,6 +108,10 @@ $(document).ready(function(){
     {
       var tail = snake_array.pop(); //pops out the last cell
       tail.x = nx; tail.y = ny;
+
+      // ctx.fillStyle = "transparent";
+      // ctx.fillRect(0, 0, w, h);
+
     }
     //The snake can now eat the food.
     
@@ -125,7 +134,7 @@ $(document).ready(function(){
   //Lets first create a generic function to paint cells
   function paint_cell(x, y)
   {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = "#74e8bb";
     ctx.fillRect(x*cw, y*cw, cw, cw);
     ctx.strokeStyle = "white";
     ctx.strokeRect(x*cw, y*cw, cw, cw);
