@@ -367,6 +367,10 @@ div#switch div#top-right{
   }
 }
 
+div.feed-container div.feed-wrapper:nth-child(1){
+  margin-right: 40px;
+}
+
 .animated-ellipsis span:nth-child(1) {
   -webkit-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
   -moz-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);

@@ -5,12 +5,19 @@ require 'eventmachine'
 
 Pusher.url = ENV["PUSHER_RETHINK_URL"]
 
+# host, port = (ENV["RACK_ENV"] == "production") ? 
+
+address = (ENV["RACK_ENV"] == "production") ? ENV["DB_ADDRESS"] : "localhost:28015"
+
+host, port = address.split(":")
+
 include RethinkDB::Shortcuts
 
 $conn = r.connect(
-  host: "localhost",
-  port: 28015,
+  host: host,
+  port: port,
   db: 'snake',
+  auth_key: ENV["DB_PASSWORD"]
 )
 
 PLAYERS = r.table("players")
