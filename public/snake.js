@@ -180,16 +180,16 @@ $(document).ready(function(){
       return Math.abs(b[1]) - Math.abs(a[1]);
     });
     ref = [sorted[0][0], sorted[0][1]], axis = ref[0], value = ref[1];
-    if (axis === "beta" && value < -10) {
+    if (axis === "beta" && value < -5) {
       movement = "up";
     }
-    if (axis === "beta" && value > 10) {
+    if (axis === "beta" && value > 5) {
       movement = "down";
     }
-    if (axis === "gamma" && value > 10) {
+    if (axis === "gamma" && value > 5) {
       movement = "right";
     }
-    if (axis === "gamma" && value < -10) {
+    if (axis === "gamma" && value < -5) {
       movement = "left";
     }
     return movement;

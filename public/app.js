@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  window.screen.orientation.lock('portrait-primary')
+
   var name;
 
   var scores = {}
@@ -33,11 +35,6 @@ $(document).ready(function(){
     $(document).trigger("start_game");
   }
 
-  // $("#start-playing").on("click", function(){
-  //   name = $("#player-name").text();
-  //   scores[name] = 0;
-  //   startGame();
-  // });
 
   $("#enter-name").on("keydown", function(event){
     if (event.keyCode != 13) return;
@@ -69,6 +66,21 @@ $(document).ready(function(){
     leaders.push(player);
     showLeaderBoard();
   });
+
+
+
+  function isSmallScreen(){
+    return window.innerWidth < 500;
+  }
+
+  window.onresize = function(event){
+    if (isSmallScreen()){
+      $('#canvas').width(window.innerWidth - 50)
+    } else {
+      $('#canvas').width(450)     
+    }
+  }
+
 
 
 });
