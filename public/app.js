@@ -31,12 +31,6 @@ $(document).ready(function(){
     $(document).trigger("start_game");
   }
 
-  $("#start-playing").on("click", function(){
-    name = $("#player-name").text();
-    scores[name] = 0;
-    startGame();
-  });
-
   $("#enter-name").on("keydown", function(event){
     if (event.keyCode != 13) return;
     name = $(this).val()
