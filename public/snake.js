@@ -127,6 +127,8 @@ $(document).ready(function(){
     //Lets paint the food
     paint_cell(food.x, food.y);
     //Lets paint the score
+    ctx.font = "200 16px Source Sans Pro";
+    ctx.fillStyle = "white";
     var score_text = "Score: " + score;
     ctx.fillText(score_text, 5, h-5);
   }
@@ -136,7 +138,7 @@ $(document).ready(function(){
   {
     ctx.fillStyle = "#74e8bb";
     ctx.fillRect(x*cw, y*cw, cw, cw);
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = "transparent";
     ctx.strokeRect(x*cw, y*cw, cw, cw);
   }
   
@@ -152,6 +154,8 @@ $(document).ready(function(){
     return false;
   }
   
+
+
   //Lets add the keyboard controls now
   $(document).keydown(function(e){
     var key = e.which;
@@ -163,6 +167,43 @@ $(document).ready(function(){
     else if(key == "40" && d != "up") d = "down";
     //The snake is now keyboard controllable
   })
+
+  // gyro.frequency = 100;
+
+  function findMovementFrom(tilt){
+    var angle, axis, movement, ref, sortable, sorted, value;
+    sortable = [];
+    for (angle in tilt) {
+      sortable.push([angle, tilt[angle]]);
+    }
+    sorted = sortable.sort(function(a, b) {
+      return Math.abs(b[1]) - Math.abs(a[1]);
+    });
+    ref = [sorted[0][0], sorted[0][1]], axis = ref[0], value = ref[1];
+    if (axis === "beta" && value < -10) {
+      movement = "up";
+    }
+    if (axis === "beta" && value > 10) {
+      movement = "down";
+    }
+    if (axis === "gamma" && value > 10) {
+      movement = "right";
+    }
+    if (axis === "gamma" && value < -10) {
+      movement = "left";
+    }
+    return movement;
+  }
+
+  gyro.startTracking(function(angles){
+    angles = {beta: angles.beta, gamma: angles.gamma}
+    intent = findMovementFrom(angles);
+    if(intent == "left" && d != "right") d = "left";
+    else if(intent == "up" && d != "down") d = "up";
+    else if(intent == "right" && d != "left") d = "right";
+    else if(intent == "down" && d != "up") d = "down";   
+  });
+
   
   
 })

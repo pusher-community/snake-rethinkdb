@@ -17,6 +17,17 @@ body {
   height: 100vh;
 }
 
+.feed {
+  list-style: none;
+  padding: unset;
+  font-size: 16px;
+}
+
+.feed-wrapper {
+  max-height: 450px;
+  overflow: scroll;
+}
+
 rect.highcharts-background {
   opacity: 0;
 }
@@ -39,6 +50,10 @@ a.btn-default.submit-notification#submit[disabled] {
 div#email-input-wrapper {
   display: inline-block;
   position: relative;
+}
+
+div.row.board {
+  margin-top: 70px;
 }
 
 .signup-link {
@@ -68,7 +83,7 @@ header.navbar {
 }
 
 div.inner {
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 div.bootstrap-switch {
@@ -94,6 +109,279 @@ div#switch div#top-right{
   border-bottom: 2px #74e8bb dashed;
 }
 
+.animate-ellipsis-keyframes-1 0% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-1 25% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-1 50% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-1 75% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-1 100% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-2 0% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-2 25% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-2 50% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-2 75% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-2 100% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-3 0% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-3 25% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-3 50% {
+  opacity: 0.2;
+}
+.animate-ellipsis-keyframes-3 75% {
+  opacity: 1;
+}
+.animate-ellipsis-keyframes-3 100% {
+  opacity: 0.2;
+}
+@-webkit-keyframes animate-ellipsis-1 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-moz-keyframes animate-ellipsis-1 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-o-keyframes animate-ellipsis-1 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes animate-ellipsis-1 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-webkit-keyframes animate-ellipsis-2 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-moz-keyframes animate-ellipsis-2 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-o-keyframes animate-ellipsis-2 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes animate-ellipsis-2 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-webkit-keyframes animate-ellipsis-3 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-moz-keyframes animate-ellipsis-3 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@-o-keyframes animate-ellipsis-3 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes animate-ellipsis-3 {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.animated-ellipsis span:nth-child(1) {
+  -webkit-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
+  -moz-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
+  -o-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
+  -ms-animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
+  animation: animate-ellipsis-1 3s infinite cubic-bezier(0,1,0,1);
+}
+
+.animated-ellipsis span:nth-child(2) {
+  -webkit-animation: animate-ellipsis-2 3s infinite cubic-bezier(0,1,0,1);
+  -moz-animation: animate-ellipsis-2 3s infinite cubic-bezier(0,1,0,1);
+  -o-animation: animate-ellipsis-2 3s infinite cubic-bezier(0,1,0,1);
+  -ms-animation: animate-ellipsis-2 3s infinite cubic-bezier(0,1,0,1);
+  animation: animate-ellipsis-2 3s infinite cubic-bezier(0,1,0,1);
+}
+
+.animated-ellipsis span:nth-child(3) {
+  -webkit-animation: animate-ellipsis-3 3s infinite cubic-bezier(0,1,0,1);
+  -moz-animation: animate-ellipsis-3 3s infinite cubic-bezier(0,1,0,1);
+  -o-animation: animate-ellipsis-3 3s infinite cubic-bezier(0,1,0,1);
+  -ms-animation: animate-ellipsis-3 3s infinite cubic-bezier(0,1,0,1);
+  animation: animate-ellipsis-3 3s infinite cubic-bezier(0,1,0,1);
+}
 
 div#send {
   margin-top:50px;
@@ -112,7 +400,6 @@ input.create-notification {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 0;
   letter-spacing: 0.075rem;
-  margin-right: 30px;
   position: relative;
   z-index: 1;
 }
@@ -146,6 +433,7 @@ span.bootstrap-switch-handle-on, span.bootstrap-switch-handle-off {
   color: white !important;
 }
 
+
 span.bootstrap-switch-handle-off {
   background: #aac0c6 !important;
 }
@@ -160,7 +448,9 @@ h1.page-heading{
 .page-subheading {
   font-weight: 200;
   line-height: 32px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 p.disclaimer {
@@ -209,9 +499,10 @@ div#email-diagram {
   position: relative;
 }
 
-.mail-icon {
+.icomoon {
   font-family: Icomoon;
-  font-size: 60px;
+  font-size: 28px;
+  font-weight: 200;
 }
 
 div#you-got-mail {
@@ -252,6 +543,23 @@ div#notification-container {
   vertical-align: middle;
   color: #9ca8aa;
   text-align: left;
+}
+
+div.feed-header {
+  border-bottom: 1px solid white;
+  margin-bottom: 16px;
+}
+
+div.feed-title-wrapper {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+h4.feed-title {
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0;
 }
 
 #notification-text {
