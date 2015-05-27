@@ -17,10 +17,18 @@ body {
   height: 100vh;
 }
 
+.game-container {
+  text-align: center;
+}
+
 .feed {
   list-style: none;
   padding: unset;
   font-size: 16px;
+}
+
+li.high-score p {
+  margin: 0 0 5px;
 }
 
 .feed-wrapper {
@@ -583,6 +591,11 @@ p#mail-alert {
 }
 
 @media screen and (max-width: 994px) {
+
+  .feed-container {
+    margin-top: 50px;
+  }
+
   div.devices {
     width: 85%;
   }
