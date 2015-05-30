@@ -158,7 +158,10 @@ $(document).ready(function(){
 
   //Lets add the keyboard controls now
   $(document).keydown(function(e){
+    e.preventDefault();
     var key = e.which;
+
+    
 
     //We will add another clause to prevent reverse gear
     if(key == "37" && d != "right") d = "left";

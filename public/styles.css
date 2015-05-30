@@ -14,7 +14,7 @@ body {
   background: -moz-linear-gradient(right, #2193b0, #6dd5ed  ); /* For Firefox 3.6 to 15 */
   background: -webkit-linear-gradient(top left, #2193b0, #6dd5ed);
   background: linear-gradient(to right, #2193b0, #6dd5ed);
-  height: 100vh;
+  /*height: 100vh;*/
 }
 
 .game-container {
@@ -25,6 +25,13 @@ body {
   list-style: none;
   padding: unset;
   font-size: 16px;
+}
+
+.feed-icon {
+  /*zoom: 50%;*/
+  height: 27px;
+  width: 27px;
+  margin-top: -35px;
 }
 
 li.high-score p {
@@ -61,7 +68,8 @@ div#email-input-wrapper {
 }
 
 div.row.board {
-  margin-top: 70px;
+  margin-top: 40px;
+  margin-bottom: 100px;
 }
 
 .signup-link {
@@ -91,7 +99,7 @@ header.navbar {
 }
 
 div.inner {
-  margin-top: 100px;
+  margin-top: 3%;
 }
 
 div.bootstrap-switch {
@@ -459,7 +467,7 @@ h1.page-heading{
 
 .page-subheading {
   font-weight: 200;
-  line-height: 32px;
+  line-height: 28px;
   margin-bottom: 50px;
   max-width: 600px;
   margin: 0 auto;
@@ -696,6 +704,9 @@ p#mail-alert {
   #app-diagram {
     width: 400px;
     height: 400px;
+  }
+  div.feed-container div.feed-wrapper:nth-child(1){
+    margin-right: unset;
   }
 }
 

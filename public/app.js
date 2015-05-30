@@ -1,6 +1,9 @@
 $(document).ready(function(){
-
-  window.screen.orientation.lock('portrait-primary')
+  try{
+    window.screen.orientation.lock('portrait-primary');
+  }catch(e){
+    window.screen.mozLockOrientation('portrait-primary');
+  }
 
   var name;
 
