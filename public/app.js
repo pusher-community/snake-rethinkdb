@@ -34,6 +34,7 @@ $(document).ready(function(){
 
   function startGame(){
     $(this).hide();
+    $('.row.board').show();
     $("#canvas").show();
     $(document).trigger("start_game");
   }

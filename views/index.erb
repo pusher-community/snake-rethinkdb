@@ -45,8 +45,17 @@
 
           <% if !@current_player %>
         <div class="inputs text-center">
-          <input class="create-notification" type="text" id="enter-name" placeholder="Please enter your name">
+          <input class="create-notification" type="text" id="enter-name" placeholder="Enter your name...">
         </div>
+
+        <script async defer>
+          $(document).ready(function(){
+           $('.row.board').hide();          
+          });
+
+          $('')
+
+        </script>
           <% else %>
           <script async defer>
             $(document).ready(function(){

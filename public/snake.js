@@ -158,10 +158,9 @@ $(document).ready(function(){
 
   //Lets add the keyboard controls now
   $(document).keydown(function(e){
-    e.preventDefault();
     var key = e.which;
 
-    
+    if ($.inArray(key, [37,38,39,40]) != -1 ) e.preventDefault();
 
     //We will add another clause to prevent reverse gear
     if(key == "37" && d != "right") d = "left";
